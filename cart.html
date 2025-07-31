@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Fresheat</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-container { max-width: 600px; margin: 3em auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 2em; }
+    .cart-title { color: var(--primary-color); text-align: center; margin-bottom: 1em; }
+    .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+    .cart-table th, .cart-table td { padding: 0.7em; text-align: center; border-bottom: 1px solid #eee; }
+    .cart-table th { background: #f3f3f3; color: #111; }
+    .cart-table img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; }
+    .cart-total { text-align: right; font-size: 1.2em; font-weight: bold; color: #007bff; margin-bottom: 1em; }
+    .remove-btn { color: #d7263d; background: none; border: none; font-size: 1.1em; cursor: pointer; }
+    .qty-input { width: 50px; text-align: center; border-radius: 6px; border: 1px solid #ccc; padding: 0.2em; }
+    .payment-section { display: none; margin-top: 2em; text-align: center; }
+    .payment-section.active { display: block; }
+    .payment-section input, .payment-section button { margin: 0.5em 0; }
+    @media (prefers-color-scheme: dark) {
+      .cart-container { background: #232323; color: #fff; }
+      .cart-table th { background: #181a1b; color: #ffd966; }
+      .cart-total { color: #ffd966; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <h2 class="cart-title">Your Cart</h2>
+    <table class="cart-table" id="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body"></tbody>
+    </table>
+    <div class="cart-total" id="cart-total"></div>
+    <button class="btn btn-primary" id="proceed-payment">Proceed to Payment</button>
+    <div class="payment-section" id="payment-section">
+      <h3>Payment</h3>
+      <form id="payment-form">
+        <div style="margin-bottom:1em;">
+          <label for="pay-method" style="font-weight:600;">Payment Method:</label>
+          <select id="pay-method" name="pay-method" style="margin-left:0.5em;">
+            <option value="card">Credit/Debit Card</option>
+            <option value="upi">UPI</option>
+            <option value="cod">Cash on Delivery</option>
+          </select>
+        </div>
+        <div id="card-fields">
+          <input type="text" placeholder="Name on Card" required><br>
+          <input type="text" placeholder="Card Number" required maxlength="16"><br>
+          <input type="text" placeholder="Expiry (MM/YY)" required maxlength="5"><br>
+          <input type="text" placeholder="CVV" required maxlength="3"><br>
+        </div>
+        <div id="upi-fields" style="display:none;">
+          <input type="text" placeholder="UPI ID" id="upi-id" name="upi-id"><br>
+        </div>
+        <div id="cod-fields" style="display:none; color:#007bff; font-weight:600; margin-bottom:1em;">
+          Pay with cash when your order is delivered!
+        </div>
+        <button type="submit" class="btn btn-primary">Pay Now</button>
+      </form>
+      <div id="payment-success" style="color:green;font-weight:600;margin-top:1em;"></div>
+    </div>
+    <a href="index.html#shop" class="btn btn-primary" style="margin-top:1em;">Continue Shopping</a>
+  </div>
+  <script>
+    // Load cart from localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function renderCart() {
+      const cart = getCart();
+      const tbody = document.getElementById('cart-body');
+      tbody.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img src="${item.img}" alt="${item.name}"><br>${item.name}</td>
+          <td>₹${item.price}</td>
+          <td><input type="number" min="1" value="${item.qty}" class="qty-input" data-idx="${idx}"></td>
+          <td>₹${itemTotal}</td>
+          <td><button class="remove-btn" data-idx="${idx}">&times;</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('cart-total').textContent = 'Total: ₹' + total;
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5">Your cart is empty.</td></tr>';
+        document.getElementById('cart-total').textContent = '';
+      }
+    }
+    // Handle quantity change and remove
+    document.addEventListener('input', function(e) {
+      if (e.target.classList.contains('qty-input')) {
+        const idx = e.target.getAttribute('data-idx');
+        let cart = getCart();
+        cart[idx].qty = Math.max(1, parseInt(e.target.value) || 1);
+        setCart(cart);
+        renderCart();
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('remove-btn')) {
+        const idx = e.target.getAttribute('data-idx');
+        let cart = getCart();
+        cart.splice(idx, 1);
+        setCart(cart);
+        renderCart();
+      }
+    });
+    // Payment section
+    document.getElementById('proceed-payment').onclick = function() {
+      document.getElementById('payment-section').classList.add('active');
+      this.style.display = 'none';
+    };
+    // Payment method dynamic fields
+    const payMethod = document.getElementById('pay-method');
+    const cardFields = document.getElementById('card-fields');
+    const upiFields = document.getElementById('upi-fields');
+    const codFields = document.getElementById('cod-fields');
+    payMethod.onchange = function() {
+      // Card fields
+      const cardInputs = cardFields.querySelectorAll('input');
+      if (this.value === 'card') {
+        cardFields.style.display = '';
+        upiFields.style.display = 'none';
+        codFields.style.display = 'none';
+        cardInputs.forEach(input => input.setAttribute('required', 'required'));
+      } else if (this.value === 'upi') {
+        cardFields.style.display = 'none';
+        upiFields.style.display = '';
+        codFields.style.display = 'none';
+        cardInputs.forEach(input => input.removeAttribute('required'));
+      } else if (this.value === 'cod') {
+        cardFields.style.display = 'none';
+        upiFields.style.display = 'none';
+        codFields.style.display = '';
+        cardInputs.forEach(input => input.removeAttribute('required'));
+      }
+    };
+    document.getElementById('payment-form').onsubmit = function(e) {
+      e.preventDefault();
+      let method = payMethod.value;
+      let msg = '';
+      if (method === 'card') {
+        msg = 'Payment Successful! Thank you for your order.';
+      } else if (method === 'upi') {
+        const upi = document.getElementById('upi-id').value.trim();
+        if (!upi) {
+          document.getElementById('upi-id').focus();
+          alert('Please enter your UPI ID.');
+          return;
+        }
+        msg = 'UPI Payment Successful! Thank you for your order.';
+      } else if (method === 'cod') {
+        msg = 'Order placed! Please pay with cash on delivery.';
+      }
+      document.getElementById('payment-success').textContent = msg;
+      localStorage.removeItem('cart');
+      renderCart();
+    };
+    renderCart();
+  </script>
+</body>
+</html> 
