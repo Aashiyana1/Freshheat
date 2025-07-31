@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresheat - Food & Restaurant</title>
+    <!-- Google Fonts Example (replace with actual fonts later) -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Roboto:400,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to your CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="container header-flex">
+        <!-- Logo -->
+        <div class="logo">
+          <span>Fresheat</span>
+        </div>
+        <!-- Navigation -->
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#shop">Shop</a></li>
+          </ul>
+        </nav>
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Book A Table button triggers modal -->
+          <a href="#" class="btn btn-primary book-table-trigger">Book A Table</a>
+          <!-- Social and cart icons (already present) -->
+          <a href="cart.html" class="icon-link cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count">2</span></a>
+          <a href="https://facebook.com/fresheatindia" class="icon-link facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/fresheatindia" class="icon-link twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/fresheatindia" class="icon-link instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@fresheatindia" class="icon-link youtube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="icon-link search-trigger"><i class="fas fa-search"></i></a>
+          <!-- Hamburger for mobile/quick menu -->
+          <a href="#" class="icon-link hamburger"><i class="fas fa-bars"></i></a>
+        </div>
+      </div>
+    </header>
+    <div class="nav-overlay"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="hero-tagline">Welcome To Fresheat</span>
+        <h1 class="hero-title">CHICAGO DEEP<br>BURGER KING</h1>
+        <p class="hero-desc">Delicious food, fresh ingredients, and a taste you’ll never forget. Discover our menu and book your table today!</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">Discover Our Menu</a>
+          <a href="#" class="btn btn-secondary book-table-trigger">Book A Table</a>
+        </div>
+        <div class="scroll-down">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+      </div>
+    </section>
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+      <div class="container about-flex">
+        <!-- About Image -->
+        <div class="about-img">
+          <img src="images/about-chef.jpg" alt="Our Chef or Restaurant" />
+        </div>
+        <!-- About Content -->
+        <div class="about-content">
+          <span class="section-tagline">About Our Restaurant</span>
+          <h2 class="section-title">Welcome to Fresheat</h2>
+          <p>
+            At Fresheat, we believe in serving only the freshest ingredients, expertly prepared by our talented chefs. Our passion for food and hospitality ensures every guest enjoys a memorable dining experience.
+          </p>
+          <ul class="about-features">
+            <li><i class="fas fa-check-circle"></i> Fresh Ingredients</li>
+            <li><i class="fas fa-check-circle"></i> Expert Chefs</li>
+            <li><i class="fas fa-check-circle"></i> Cozy Ambience</li>
+            <li><i class="fas fa-check-circle"></i> Fast Service</li>
+          </ul>
+          <a href="about.html" class="btn btn-primary" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <span class="section-tagline">Our Menu</span>
+        <h2 class="section-title">Delicious Food</h2>
+        <!-- Menu Categories -->
+        <div class="menu-categories">
+          <button class="menu-cat-btn active" data-category="all">All</button>
+          <button class="menu-cat-btn" data-category="appetizers">Appetizers</button>
+          <button class="menu-cat-btn" data-category="main-course">Main Course</button>
+          <button class="menu-cat-btn" data-category="desserts">Desserts</button>
+          <button class="menu-cat-btn" data-category="drinks">Drinks</button>
+        </div>
+        <!-- Menu Grid -->
+        <div class="menu-grid">
+          <!-- Menu Item Example -->
+          <div class="menu-item" data-category="main-course">
+            <img src="images/menu1.jpg" alt="Dish 1">
+            <h3>Grilled Chicken</h3>
+            <p>Juicy grilled chicken with herbs and spices.</p>
+            <span class="menu-price">₹349</span>
+            <a href="order.html?name=Grilled%20Chicken&price=₹349&img=images/menu1.jpg&desc=Juicy%20grilled%20chicken%20with%20herbs%20and%20spices." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="main-course">
+            <img src="images/menu2.jpg" alt="Dish 2">
+            <h3>Veggie Pizza</h3>
+            <p>Fresh vegetables and mozzarella on a crispy crust.</p>
+            <span class="menu-price">₹299</span>
+            <a href="order.html?name=Veggie%20Pizza&price=₹299&img=images/menu2.jpg&desc=Fresh%20vegetables%20and%20mozzarella%20on%20a%20crispy%20crust." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="desserts">
+            <img src="images/menu3.jpg" alt="Dish 3">
+            <h3>Chocolate Cake</h3>
+            <p>Rich and moist chocolate cake with ganache.</p>
+            <span class="menu-price">₹179</span>
+            <a href="order.html?name=Chocolate%20Cake&price=₹179&img=images/menu3.jpg&desc=Rich%20and%20moist%20chocolate%20cake%20with%20ganache." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="appetizers">
+            <img src="images/menu4.jpg" alt="Dish 4">
+            <h3>Caesar Salad</h3>
+            <p>Crisp romaine, parmesan, and creamy dressing.</p>
+            <span class="menu-price">₹199</span>
+            <a href="order.html?name=Caesar%20Salad&price=₹199&img=images/menu4.jpg&desc=Crisp%20romaine,%20parmesan,%20and%20creamy%20dressing." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <!-- Add to Menu Grid -->
+          <div class="menu-item" data-category="main-course">
+            <img src="images/menu5.jpg" alt="Paneer Tikka">
+            <h3>Paneer Tikka</h3>
+            <p>Grilled paneer cubes marinated in spices.</p>
+            <span class="menu-price">₹259</span>
+            <a href="order.html?name=Paneer%20Tikka&price=₹259&img=images/menu5.jpg&desc=Grilled%20paneer%20cubes%20marinated%20in%20spices." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="main-course">
+            <img src="images/menu6.jpg" alt="Butter Chicken">
+            <h3>Butter Chicken</h3>
+            <p>Creamy tomato-based chicken curry.</p>
+            <span class="menu-price">₹399</span>
+            <a href="order.html?name=Butter%20Chicken&price=₹399&img=images/menu6.jpg&desc=Creamy%20tomato-based%20chicken%20curry." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="appetizers">
+            <img src="images/menu7.jpg" alt="Spring Rolls">
+            <h3>Spring Rolls</h3>
+            <p>Crispy rolls stuffed with veggies.</p>
+            <span class="menu-price">₹149</span>
+            <a href="order.html?name=Spring%20Rolls&price=₹149&img=images/menu7.jpg&desc=Crispy%20rolls%20stuffed%20with%20veggies." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="desserts">
+            <img src="images/menu8.jpg" alt="Gulab Jamun">
+            <h3>Gulab Jamun</h3>
+            <p>Soft milk balls soaked in syrup.</p>
+            <span class="menu-price">₹99</span>
+            <a href="order.html?name=Gulab%20Jamun&price=₹99&img=images/menu8.jpg&desc=Soft%20milk%20balls%20soaked%20in%20syrup." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="drinks">
+            <img src="images/drink1.jpg" alt="Masala Chai">
+            <h3>Masala Chai</h3>
+            <p>Spiced Indian tea served hot.</p>
+            <span class="menu-price">₹59</span>
+            <a href="order.html?name=Masala%20Chai&price=₹59&img=images/drink1.jpg&desc=Spiced%20Indian%20tea%20served%20hot." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="drinks">
+            <img src="images/drink2.jpg" alt="Cold Coffee">
+            <h3>Cold Coffee</h3>
+            <p>Chilled coffee with ice and cream.</p>
+            <span class="menu-price">₹99</span>
+            <a href="order.html?name=Cold%20Coffee&price=₹99&img=images/drink2.jpg&desc=Chilled%20coffee%20with%20ice%20and%20cream." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+          <div class="menu-item" data-category="drinks">
+            <img src="images/drink3.jpg" alt="Fresh Lime Soda">
+            <h3>Fresh Lime Soda</h3>
+            <p>Refreshing soda with lime and mint.</p>
+            <span class="menu-price">₹79</span>
+            <a href="order.html?name=Fresh%20Lime%20Soda&price=₹79&img=images/drink3.jpg&desc=Refreshing%20soda%20with%20lime%20and%20mint." class="btn btn-primary btn-sm" target="_blank">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="container">
+        <span class="section-tagline">What Our Clients Say</span>
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <img src="images/client2.jpg" alt="Client 1">
+            <p class="testimonial-text">"The food was absolutely wonderful, from preparation to presentation, very pleasing!"</p>
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="testimonial-name">Priya Sharma</span>
+          </div>
+          <div class="testimonial-card">
+            <img src="images/client1.jpg" alt="Client 2">
+            <p class="testimonial-text">"A delightful experience! The staff was friendly and the ambiance was perfect."</p>
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <span class="testimonial-name">Rahul Verma</span>
+          </div>
+          <div class="testimonial-card">
+            <img src="images/client3.jpg" alt="Client 3">
+            <p class="testimonial-text">"Best restaurant in town! Highly recommend the grilled chicken and desserts."</p>
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <span class="testimonial-name">Anjali Mehta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Chef’s Section -->
+    <section class="chefs-section">
+      <div class="container">
+        <span class="section-tagline">Our Experts</span>
+        <h2 class="section-title">Meet Our Expert Chefs</h2>
+        <div class="chefs-grid">
+          <div class="chef-card">
+            <img src="images/chef1.jpg" alt="Chef 1">
+            <h3>Rajat Saxena</h3>
+            <p>Head Chef</p>
+            <div class="chef-socials">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="chef-card">
+            <img src="images/chef3.jpg" alt="Chef 2">
+            <h3>Leela</h3>
+            <p>Pastry Chef</p>
+            <div class="chef-socials">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="chef-card">
+            <img src="images/chef2.jpg" alt="Chef 3">
+            <h3>Ronak</h3>
+            <p>Grill Master</p>
+            <div class="chef-socials">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Blog/News Section -->
+    <section id="blog" class="blog-section">
+      <div class="container">
+        <span class="section-tagline">Our Latest Foods News</span>
+        <h2 class="section-title">Latest From Our Blog</h2>
+        <div class="blog-grid">
+          <div class="blog-card">
+            <img src="images/blog1.jpg" alt="Blog 1">
+            <div class="blog-content">
+              <span class="blog-date">July 10, 2024</span>
+              <h3>Health Benefits of Grilled Chicken</h3>
+              <p>Discover why grilled chicken is a healthy and delicious choice for your meals.</p>
+              <a href="blog.html?title=Health%20Benefits%20of%20Grilled%20Chicken&date=July%2010,%202024&author=Chef%20Rajat%20Saxena&content=Grilled%20chicken%20is%20not%20only%20delicious%20but%20also%20packed%20with%20nutritional%20benefits.%20It%20is%20a%20lean%20source%20of%20protein%2C%20making%20it%20an%20excellent%20choice%20for%20those%20looking%20to%20build%20muscle%20or%20maintain%20a%20healthy%20weight.%0A%0AUnlike%20fried%20chicken%2C%20grilling%20uses%20less%20oil%2C%20which%20means%20fewer%20calories%20and%20less%20unhealthy%20fat.%20The%20grilling%20process%20also%20helps%20retain%20essential%20nutrients%20like%20vitamins%20B6%20and%20B12%2C%20which%20are%20important%20for%20energy%20production%20and%20brain%20health.%0A%0AGrilled%20chicken%20pairs%20well%20with%20a%20variety%20of%20herbs%20and%20spices%2C%20allowing%20you%20to%20enjoy%20different%20flavors%20without%20adding%20extra%20calories.%20Try%20it%20with%20rosemary%2C%20thyme%2C%20or%20a%20squeeze%20of%20lemon%20for%20a%20refreshing%20twist.%0A%0AWhether%20served%20with%20a%20side%20of%20grilled%20vegetables%20or%20on%20top%20of%20a%20fresh%20salad%2C%20grilled%20chicken%20is%20a%20versatile%20dish%20that%20can%20be%20enjoyed%20any%20time%20of%20the%20day.%20Make%20it%20a%20part%20of%20your%20healthy%20diet%20today!&img=images/blog1.jpg" class="btn btn-secondary btn-sm" target="_blank">Read More</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <img src="images/blog2.jpg" alt="Blog 2">
+            <div class="blog-content">
+              <span class="blog-date">July 8, 2024</span>
+              <h3>Fresh Ingredients: Our Secret</h3>
+              <p>Learn how we source the freshest ingredients for every dish we serve.</p>
+              <a href="blog.html?title=Fresh%20Ingredients:%20Our%20Secret&date=July%208,%202024&author=Chef%20Leela&content=At%20Fresheat%2C%20we%20believe%20that%20the%20quality%20of%20our%20dishes%20starts%20with%20the%20ingredients%20we%20use.%20That%E2%80%99s%20why%20we%20source%20only%20the%20freshest%20produce%2C%20meats%2C%20and%20spices%20from%20local%20farmers%20and%20trusted%20suppliers.%0A%0AOur%20chefs%20personally%20select%20each%20ingredient%20to%20ensure%20it%20meets%20our%20high%20standards%20for%20flavor%2C%20texture%2C%20and%20nutritional%20value.%20We%20believe%20that%20fresh%20ingredients%20not%20only%20taste%20better%2C%20but%20also%20help%20create%20healthier%20meals%20for%20our%20guests.%0A%0AFrom%20crisp%20vegetables%20to%20aromatic%20herbs%2C%20every%20component%20of%20our%20dishes%20is%20chosen%20with%20care.%20This%20commitment%20to%20freshness%20is%20what%20sets%20us%20apart%20and%20keeps%20our%20customers%20coming%20back%20for%20more.%0A%0AExperience%20the%20difference%20that%20fresh%20ingredients%20make%20%E2%80%93%20visit%20Fresheat%20today!&img=images/blog2.jpg" class="btn btn-secondary btn-sm" target="_blank">Read More</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <img src="images/blog3.jpg" alt="Blog 3">
+            <div class="blog-content">
+              <span class="blog-date">July 5, 2024</span>
+              <h3>Behind the Scenes: Meet Our Chefs</h3>
+              <p>Get to know the talented chefs who make your dining experience special.</p>
+              <a href="blog.html?title=Behind%20the%20Scenes:%20Meet%20Our%20Chefs&date=July%205,%202024&author=Chef%20Ronak&content=Our%20team%20of%20chefs%20is%20the%20heart%20and%20soul%20of%20Fresheat.%20Each%20chef%20brings%20years%20of%20experience%2C%20creativity%2C%20and%20passion%20to%20the%20kitchen%2C%20ensuring%20that%20every%20dish%20is%20a%20work%20of%20art.%0A%0AFrom%20perfecting%20classic%20recipes%20to%20experimenting%20with%20new%20flavors%2C%20our%20chefs%20are%20dedicated%20to%20delivering%20an%20exceptional%20dining%20experience.%20They%20work%20tirelessly%20behind%20the%20scenes%20to%20prepare%20meals%20that%20delight%20the%20senses%20and%20leave%20a%20lasting%20impression.%0A%0AGet%20to%20know%20the%20faces%20behind%20your%20favorite%20dishes%20%E2%80%93%20each%20one%20has%20a%20unique%20story%20and%20a%20deep%20love%20for%20the%20culinary%20arts.%0A%0AWe%20invite%20you%20to%20meet%20our%20chefs%20and%20discover%20the%20passion%20that%20goes%20into%20every%20meal%20at%20Fresheat!&img=images/blog3.jpg" class="btn btn-secondary btn-sm" target="_blank">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Gallery/Events Section -->
+    <section class="gallery-section">
+      <div class="container">
+        <span class="section-tagline">Our Gallery</span>
+        <h2 class="section-title">Delicious Moments</h2>
+        <div class="gallery-grid">
+          <img src="images/gallery1.jpg" alt="Gallery 1">
+          <img src="images/gallery2.jpg" alt="Gallery 2">
+          <img src="images/gallery3.jpg" alt="Gallery 3">
+          <img src="images/gallery4.jpg" alt="Gallery 4">
+          <img src="images/gallery5.jpg" alt="Gallery 5">
+          <img src="images/gallery6.jpg" alt="Gallery 6">
+        </div>
+      </div>
+    </section>
+    <!-- Shop Section -->
+    <section id="shop" class="shop-section">
+      <div class="container text-center">
+        <span class="section-tagline">Shop</span>
+        <h2 class="section-title">Our Products</h2>
+        <p>Order your favorite items directly from our shop!</p>
+        <div class="shop-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2em;margin-top:2em;">
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu1.jpg" alt="Product 1" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Grilled Chicken</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹349</span>
+            <a href="order.html?name=Grilled%20Chicken&price=₹349&img=images/menu1.jpg&desc=Juicy%20grilled%20chicken%20with%20herbs%20and%20spices." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu2.jpg" alt="Product 2" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Veggie Pizza</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹299</span>
+            <a href="order.html?name=Veggie%20Pizza&price=₹299&img=images/menu2.jpg&desc=Fresh%20vegetables%20and%20mozzarella%20on%20a%20crispy%20crust." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu3.jpg" alt="Product 3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Chocolate Cake</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹179</span>
+            <a href="order.html?name=Chocolate%20Cake&price=₹179&img=images/menu3.jpg&desc=Rich%20and%20moist%20chocolate%20cake%20with%20ganache." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <!-- Add to Shop Grid -->
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu5.jpg" alt="Paneer Tikka" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Paneer Tikka</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹259</span>
+            <a href="order.html?name=Paneer%20Tikka&price=₹259&img=images/menu5.jpg&desc=Grilled%20paneer%20cubes%20marinated%20in%20spices." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu6.jpg" alt="Butter Chicken" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Butter Chicken</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹399</span>
+            <a href="order.html?name=Butter%20Chicken&price=₹399&img=images/menu6.jpg&desc=Creamy%20tomato-based%20chicken%20curry." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu7.jpg" alt="Spring Rolls" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Spring Rolls</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹149</span>
+            <a href="order.html?name=Spring%20Rolls&price=₹149&img=images/menu7.jpg&desc=Crispy%20rolls%20stuffed%20with%20veggies." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/menu8.jpg" alt="Gulab Jamun" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Gulab Jamun</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹99</span>
+            <a href="order.html?name=Gulab%20Jamun&price=₹99&img=images/menu8.jpg&desc=Soft%20milk%20balls%20soaked%20in%20syrup." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/drink1.jpg" alt="Masala Chai" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Masala Chai</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹59</span>
+            <a href="order.html?name=Masala%20Chai&price=₹59&img=images/drink1.jpg&desc=Spiced%20Indian%20tea%20served%20hot." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/drink2.jpg" alt="Cold Coffee" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Cold Coffee</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹99</span>
+            <a href="order.html?name=Cold%20Coffee&price=₹99&img=images/drink2.jpg&desc=Chilled%20coffee%20with%20ice%20and%20cream." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+          <div class="shop-card" style="background:#faf7f2;border-radius:18px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:2em 1.2em 1.5em 1.2em;text-align:center;">
+            <img src="images/drink3.jpg" alt="Fresh Lime Soda" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin-bottom:1em;">
+            <h3>Fresh Lime Soda</h3>
+            <span style="font-weight:700;color:var(--secondary-color);display:block;margin-bottom:1em;">₹79</span>
+            <a href="order.html?name=Fresh%20Lime%20Soda&price=₹79&img=images/drink3.jpg&desc=Refreshing%20soda%20with%20lime%20and%20mint." class="btn btn-primary btn-sm" target="_blank">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact/Footer Section -->
+    <footer id="contact" class="site-footer">
+      <div class="container footer-flex">
+        <!-- About/Logo -->
+        <div class="footer-col">
+          <div class="footer-logo">Fresheat</div>
+          <p>Delicious food, fresh ingredients, and a taste you’ll never forget. Visit us for a memorable dining experience!</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com/fresheatindia" class="facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/fresheatindia" class="twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/fresheatindia" class="instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@fresheatindia" class="youtube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, City</li>
+            <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+            <li><i class="fas fa-envelope"></i> info@fresheat.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Sun: 10am - 10pm</li>
+          </ul>
+        </div>
+        <!-- Newsletter -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <form class="footer-newsletter" id="newsletter-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+          <div id="newsletter-success" style="color:green;font-weight:600;margin-top:0.5em;"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2024 Fresheat. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <!-- Modal Popup (hidden by default) -->
+    <div id="modal-popup" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img class="modal-img" src="" alt="" />
+        <h3 class="modal-title"></h3>
+        <p class="modal-desc"></p>
+        <span class="modal-price"></span>
+      </div>
+    </div>
+    <!-- Add search icon to header actions -->
+    <a href="#" class="icon-link search-trigger"><i class="fas fa-search"></i></a>
+    <!-- Search Modal -->
+    <div id="search-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+      <div style="background:#fff;padding:2em 1.5em;border-radius:16px;max-width:90vw;width:350px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;position:relative;">
+        <button id="close-search" style="position:absolute;top:1em;right:1em;background:none;border:none;font-size:1.3em;cursor:pointer;">&times;</button>
+        <input id="search-input" type="text" placeholder="Type product name..." style="width:90%;padding:0.7em 1em;border-radius:20px;border:1px solid #ddd;font-size:1em;">
+        <button id="search-btn" class="btn btn-primary btn-sm" style="margin-top:1em;">Search</button>
+        <div id="search-result" style="margin-top:1em;color:#007bff;font-weight:600;"></div>
+      </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var searchModal = document.getElementById('search-modal');
+      var searchTrigger = document.querySelector('.search-trigger');
+      var closeSearch = document.getElementById('close-search');
+      var searchBtn = document.getElementById('search-btn');
+      var searchInput = document.getElementById('search-input');
+      var searchResult = document.getElementById('search-result');
+      if (searchTrigger) {
+        searchTrigger.onclick = function(e) { e.preventDefault(); searchModal.style.display = 'flex'; searchInput.focus(); };
+      }
+      if (closeSearch) {
+        closeSearch.onclick = function() { 
+          searchModal.style.display = 'none'; 
+          searchInput.value = ''; 
+          searchResult.textContent = '';
+        };
+      }
+      if (searchBtn) {
+        searchBtn.onclick = function() {
+          var val = searchInput.value.trim().toLowerCase();
+          if (val) {
+            var found = false;
+            document.querySelectorAll('.shop-card h3').forEach(function(nameEl) {
+              if (nameEl.textContent.toLowerCase().includes(val)) {
+                found = true;
+              }
+            });
+            searchResult.textContent = found ? (val.charAt(0).toUpperCase() + val.slice(1) + ' is available!') : ('Sorry, not available.');
+          } else {
+            searchResult.textContent = 'Please enter a product name.';
+          }
+        };
+      }
+    });
+    </script>
+    <!-- Hamburger Dropdown Menu -->
+    <div id="hamburger-menu" style="display:none;position:absolute;top:60px;right:20px;background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.12);padding:1em 1.5em;z-index:2100;">
+      <a href="#home" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">Home</a>
+      <a href="#about" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">About Us</a>
+      <a href="#menu" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">Menu</a>
+      <a href="#blog" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">Blog</a>
+      <a href="#contact" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">Contact</a>
+      <a href="#shop" style="display:block;padding:0.5em 0;color:#222;text-decoration:none;font-weight:600;">Shop</a>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var hamburger = document.querySelector('.hamburger');
+      var hamburgerMenu = document.getElementById('hamburger-menu');
+      if (hamburger) {
+        hamburger.onclick = function(e) {
+          e.preventDefault();
+          hamburgerMenu.style.display = (hamburgerMenu.style.display === 'block') ? 'none' : 'block';
+        };
+        // Hide menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!hamburger.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+            hamburgerMenu.style.display = 'none';
+          }
+        });
+        // Hide menu when clicking a link
+        document.querySelectorAll('#hamburger-menu a').forEach(function(link) {
+          link.onclick = function() {
+            hamburgerMenu.style.display = 'none';
+          };
+        });
+      }
+    });
+    </script>
+    <!-- Book Table Modal -->
+    <div id="book-table-modal" class="book-table-modal">
+      <div class="book-table-modal-content">
+        <button id="close-book-table" class="book-table-modal-close">&times;</button>
+        <h2 class="book-table-modal-title">Book A Table</h2>
+        <form id="book-table-form" class="book-table-form">
+          <label for="book-name">Your Name</label>
+          <input id="book-name" type="text" placeholder="Enter your name" required>
+          <label for="book-email">Your Email</label>
+          <input id="book-email" type="email" placeholder="Enter your email" required>
+          <label for="book-date">Date</label>
+          <input id="book-date" type="date" required>
+          <div class="book-table-time-row">
+            <div style="flex:1;">
+              <label for="book-time">Time</label>
+              <input id="book-time" type="time" required>
+            </div>
+            <div style="flex:0.7;">
+              <label for="ampm-select">AM/PM</label>
+              <select id="ampm-select" required>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+          <label for="book-guests">Guests</label>
+          <input id="book-guests" type="number" min="1" max="20" placeholder="Number of guests" required>
+          <button type="submit" class="btn btn-primary btn-sm">Book Now</button>
+        </form>
+        <div id="book-table-success" class="book-table-success">Your table has been booked successfully!</div>
+      </div>
+    </div>
+    <style>
+.book-table-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+}
+.book-table-modal-content {
+  background: #f7f7fa;
+  padding: 2em 1.5em 1.5em 1.5em;
+  border-radius: 18px;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  text-align: left;
+  position: relative;
+  border: 1.5px solid #e0e0e0;
+}
+.book-table-modal-title {
+  color: var(--primary-color);
+  margin-bottom: 1.2em;
+  font-size: 1.4em;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.book-table-modal-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  color: #888;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.book-table-modal-close:hover {
+  color: var(--primary-color);
+}
+.book-table-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+}
+.book-table-form label {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 0.2em;
+  font-weight: 600;
+}
+.book-table-form input,
+.book-table-form select {
+  width: 100%;
+  padding: 0.7em 1em;
+  border-radius: 12px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 1em;
+  background: #fff;
+  color: #222;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.book-table-form input:focus,
+.book-table-form select:focus {
+  border: 1.5px solid var(--primary-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+  outline: none;
+  background: #f3f8ff;
+}
+.book-table-time-row {
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+}
+.book-table-time-row label {
+  font-size: 1em;
+  color: #666;
+  margin-right: 0.5em;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.book-table-form button {
+  width: 100%;
+  margin-top: 0.5em;
+  font-size: 1.1em;
+  border-radius: 12px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary-color) 60%, var(--accent-color) 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  border: none;
+}
+.book-table-form button:hover {
+  background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  color: var(--secondary-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.book-table-success {
+  color: #28a745;
+  font-weight: 700;
+  margin-top: 1.2em;
+  display: none;
+  font-size: 1.1em;
+  text-align: center;
+}
+@media (max-width: 500px) {
+  .book-table-modal-content {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+  .book-table-form input,
+  .book-table-form select {
+    font-size: 1em;
+    padding: 0.7em 0.7em;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var bookBtns = document.querySelectorAll('.book-table-trigger');
+  var modal = document.getElementById('book-table-modal');
+  var closeBtn = document.getElementById('close-book-table');
+  var form = document.getElementById('book-table-form');
+  var successMsg = document.getElementById('book-table-success');
+  bookBtns.forEach(function(bookBtn) {
+    bookBtn.onclick = function(e) { e.preventDefault(); modal.style.display = 'flex'; };
+  });
+  if (closeBtn) {
+    closeBtn.onclick = function() { modal.style.display = 'none'; form.reset(); successMsg.style.display = 'none'; };
+  }
+  if (form) {
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      successMsg.style.display = 'block';
+      setTimeout(function() {
+        modal.style.display = 'none';
+        form.reset();
+        successMsg.style.display = 'none';
+      }, 1800);
+    };
+  }
+});
+</script>
+</body>
+</html> 

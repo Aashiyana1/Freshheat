@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Test - Fresheat</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        button { padding: 10px 20px; margin: 10px 5px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        button:hover { background: #0056b3; }
+        .payment-form { margin: 20px 0; }
+        .payment-form input, .payment-form select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Payment System Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Backend Connection</h3>
+        <button onclick="testConnection()">Test Connection</button>
+        <div id="connection-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Test Payment Process</h3>
+        <div class="payment-form">
+            <input type="text" id="test-name" placeholder="Your Name" value="Test User">
+            <input type="email" id="test-email" placeholder="Your Email" value="test@example.com">
+            <select id="test-method">
+                <option value="cod">Cash on Delivery</option>
+                <option value="upi">UPI</option>
+                <option value="card">Credit/Debit Card</option>
+            </select>
+            <button onclick="testPayment()">Test Payment</button>
+        </div>
+        <div id="payment-result"></div>
+    </div>
+
+    <script>
+        async function testConnection() {
+            const resultDiv = document.getElementById('connection-result');
+            try {
+                const response = await fetch('http://localhost:5000/api/test');
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✓ Backend is running! Server says: ${data.message}</span>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Connection failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testPayment() {
+            const resultDiv = document.getElementById('payment-result');
+            const name = document.getElementById('test-name').value;
+            const email = document.getElementById('test-email').value;
+            const method = document.getElementById('test-method').value;
+            
+            if (!name || !email) {
+                resultDiv.innerHTML = '<span class="error">Please fill in name and email</span>';
+                return;
+            }
+            
+            try {
+                resultDiv.innerHTML = '<span>Processing payment...</span>';
+                
+                // Test order creation
+                const orderResponse = await fetch('http://localhost:5000/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [{ name: 'Test Item', price: 100, qty: 1 }],
+                        user: { name, email },
+                        total: 100
+                    })
+                });
+                
+                const orderData = await orderResponse.json();
+                
+                if (!orderData.success) {
+                    throw new Error('Order creation failed');
+                }
+                
+                // Test payment creation
+                const paymentResponse = await fetch('http://localhost:5000/api/payments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        orderId: orderData.order._id,
+                        amount: 100,
+                        method,
+                        status: 'success'
+                    })
+                });
+                
+                const paymentData = await paymentResponse.json();
+                
+                if (!paymentData.success) {
+                    throw new Error('Payment creation failed');
+                }
+                
+                let successMessage = '';
+                if (method === 'cod') {
+                    successMessage = 'Order placed! Please pay with cash on delivery.';
+                } else if (method === 'upi') {
+                    successMessage = 'UPI Payment Successful! Thank you for your order.';
+                } else {
+                    successMessage = 'Payment Successful! Thank you for your order.';
+                }
+                
+                resultDiv.innerHTML = `<span class="success">✓ ${successMessage}</span>`;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Payment failed: ${error.message}</span>`;
+            }
+        }
+        
+        // Test connection on page load
+        testConnection();
+    </script>
+</body>
+</html> 

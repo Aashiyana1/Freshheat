@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details - Fresheat</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .order-details { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 2em; text-align: center; }
+    .order-details img { width: 120px; height: 120px; object-fit: cover; border-radius: 12px; margin-bottom: 1em; }
+    .order-details h2 { color: var(--primary-color); margin-bottom: 0.5em; }
+    .order-details .order-price { color: #000; font-size: 1.2em; font-weight: bold; margin-bottom: 1em; }
+    .order-details .order-desc { color: #111; font-size: 1em; margin-bottom: 1em; }
+    .order-details .btn { margin-top: 1.5em; }
+    .order-qty-label { font-weight: 600; margin-right: 0.5em; }
+    .order-qty-input { width: 60px; padding: 0.3em; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; text-align: center; }
+    .order-total { color: #007bff; font-size: 1.1em; font-weight: 700; margin-top: 1em; }
+    @media (prefers-color-scheme: dark) {
+      .order-details .order-price { color: #ffd966; }
+      .order-total { color: #ffd966; }
+    }
+  </style>
+</head>
+<body>
+  <div class="order-details">
+    <img id="order-img" src="" alt="Product Image" style="display:none;" />
+    <h2 id="order-name">Order Details</h2>
+    <div class="order-price" id="order-price"></div>
+    <div class="order-desc" id="order-desc"></div>
+    <div style="margin-bottom:1em;">
+      <label for="order-qty" class="order-qty-label">Quantity:</label>
+      <input type="number" id="order-qty" class="order-qty-input" min="1" value="1">
+    </div>
+    <button class="btn btn-primary" id="add-to-cart-order" style="margin-bottom:1em;">Add to Cart</button>
+    <div class="order-total" id="order-total"></div>
+    <div id="order-message"></div>
+    <a href="index.html#shop" class="btn btn-primary">Back to Shop</a>
+    <a href="cart.html" class="btn btn-primary" style="margin-top:1em;">View Cart</a>
+  </div>
+  <script>
+    // Parse URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const price = params.get('price');
+    const img = params.get('img');
+    const desc = params.get('desc');
+    if(name) document.getElementById('order-name').textContent = name;
+    if(price) document.getElementById('order-price').textContent = 'Price per item: ' + price;
+    if(img) {
+      const imgEl = document.getElementById('order-img');
+      imgEl.src = img;
+      imgEl.style.display = 'block';
+    }
+    if(desc) document.getElementById('order-desc').textContent = desc;
+    if(name && price) {
+      document.getElementById('order-message').textContent = `Thank you for choosing ${name}! Your order is being processed.`;
+    }
+    // Quantity and total price logic
+    function parseRupee(str) {
+      // Extract numeric value from price string like '₹349'
+      return parseFloat(str.replace(/[^\d.]/g, '')) || 0;
+    }
+    const qtyInput = document.getElementById('order-qty');
+    const totalDiv = document.getElementById('order-total');
+    let unitPrice = parseRupee(price);
+    function updateTotal() {
+      const qty = Math.max(1, parseInt(qtyInput.value) || 1);
+      const total = unitPrice * qty;
+      totalDiv.textContent = `Total: ₹${total}`;
+    }
+    qtyInput.addEventListener('input', updateTotal);
+    updateTotal();
+
+    // Cart logic for Add to Cart button
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    document.getElementById('add-to-cart-order').onclick = function() {
+      if (!name || !unitPrice || !img) return;
+      const qty = Math.max(1, parseInt(qtyInput.value) || 1);
+      let cart = getCart();
+      const idx = cart.findIndex(i => i.name === name);
+      if (idx > -1) {
+        cart[idx].qty = qty;
+      } else {
+        cart.push({ name, price: unitPrice, img, qty });
+      }
+      setCart(cart);
+      this.textContent = 'Added!';
+      setTimeout(() => { this.textContent = 'Add to Cart'; }, 1200);
+      document.getElementById('order-message').textContent = `Added ${qty} × ${name} to your cart!`;
+    };
+  </script>
+</body>
+</html> 

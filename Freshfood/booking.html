@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book A Table | Fresheat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo"><span>Fresheat</span></div>
+    </div>
+  </header>
+  <section class="booking-section" style="padding: 4em 0;">
+    <div class="container text-center">
+      <span class="section-tagline">Reservation</span>
+      <h2 class="section-title">Book A Table</h2>
+      <form class="booking-form">
+        <input type="text" placeholder="Your Name" required style="margin:0.5em; padding:0.7em; border-radius:8px; border:1px solid #ccc; width:220px;">
+        <input type="email" placeholder="Your Email" required style="margin:0.5em; padding:0.7em; border-radius:8px; border:1px solid #ccc; width:220px;">
+        <input type="date" required style="margin:0.5em; padding:0.7em; border-radius:8px; border:1px solid #ccc; width:220px;">
+        <div style="display:inline-block; margin:0.5em;">
+          <input type="time" required style="padding:0.7em; border-radius:8px; border:1px solid #ccc; width:120px;">
+          <select required style="padding:0.7em; border-radius:8px; border:1px solid #ccc; width:90px; margin-left:0.5em;">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div><br>
+        <input type="number" min="1" max="20" placeholder="Guests" required style="margin:0.5em; padding:0.7em; border-radius:8px; border:1px solid #ccc; width:220px;">
+        <button type="submit" class="btn btn-primary" style="margin:0.5em;">Book Now</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html> 

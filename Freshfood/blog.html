@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post - Fresheat</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f6f6f6;
+    }
+    .blog-post-container {
+      max-width: 750px;
+      margin: 3em auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      padding: 2.5em 2em 2em 2em;
+      position: relative;
+    }
+    .blog-post-img {
+      width: 100%;
+      max-width: 400px;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 1.5em;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .blog-post-title {
+      color: var(--primary-color);
+      font-size: 2.3em;
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .blog-post-date {
+      color: #888;
+      font-size: 1.1em;
+      margin-bottom: 1.2em;
+      text-align: center;
+    }
+    .blog-post-author {
+      color: #007bff;
+      font-size: 1em;
+      margin-bottom: 1.2em;
+      text-align: center;
+      font-weight: 600;
+    }
+    .blog-post-content {
+      color: #222;
+      font-size: 1.18em;
+      line-height: 1.8;
+      margin-bottom: 2em;
+      word-break: break-word;
+    }
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.7em 2em;
+      border-radius: 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 2em;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .back-btn:hover {
+      background: var(--accent-color);
+      color: var(--secondary-color);
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #181a1b; }
+      .blog-post-container { background: #232323; color: #fff; }
+      .blog-post-title { color: #ffd966; }
+      .blog-post-content { color: #fff; }
+      .blog-post-date { color: #ffd966; }
+      .back-btn { background: #ffd966; color: #181a1b; }
+      .back-btn:hover { background: #007bff; color: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-post-container">
+    <img id="blog-img" class="blog-post-img" src="" alt="Blog Image" style="display:none;" />
+    <div class="blog-post-title" id="blog-title"></div>
+    <div class="blog-post-date" id="blog-date"></div>
+    <div class="blog-post-author" id="blog-author" style="display:none;"></div>
+    <div class="blog-post-content" id="blog-content"></div>
+    <a href="index.html#blog" class="back-btn">Back to Blog</a>
+  </div>
+  <script>
+    // Parse URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+    const date = params.get('date');
+    const content = params.get('content');
+    const img = params.get('img');
+    const author = params.get('author');
+    if (title) document.getElementById('blog-title').textContent = title;
+    if (date) document.getElementById('blog-date').textContent = date;
+    if (author) {
+      const authorEl = document.getElementById('blog-author');
+      authorEl.textContent = 'By ' + author;
+      authorEl.style.display = '';
+    }
+    // Support HTML or auto-paragraph for content
+    function renderContent(raw) {
+      if (!raw) return '';
+      if (raw.includes('<') && raw.includes('>')) {
+        // Looks like HTML, render as is
+        return raw;
+      } else {
+        // Convert \n\n to paragraphs, \n to <br>
+        return raw.split(/\n\n+/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+      }
+    }
+    if (content) document.getElementById('blog-content').innerHTML = renderContent(content);
+    if (img) {
+      const imgEl = document.getElementById('blog-img');
+      imgEl.src = img;
+      imgEl.style.display = 'block';
+    }
+  </script>
+</body>
+</html> 

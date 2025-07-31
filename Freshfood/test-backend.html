@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Test - Fresheat</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { color: green; }
+        .error { color: red; }
+        button { padding: 10px 20px; margin: 10px 5px; cursor: pointer; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Backend Connection Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Basic Connection</h3>
+        <button onclick="testConnection()">Test Connection</button>
+        <div id="connection-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Test Order API</h3>
+        <button onclick="testOrder()">Test Order Creation</button>
+        <div id="order-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Test Payment API</h3>
+        <button onclick="testPayment()">Test Payment Creation</button>
+        <div id="payment-result"></div>
+    </div>
+
+    <script>
+        async function testConnection() {
+            const resultDiv = document.getElementById('connection-result');
+            try {
+                const response = await fetch('http://localhost:5000/api/test');
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✓ Connected! Server says: ${data.message}</span>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Connection failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testOrder() {
+            const resultDiv = document.getElementById('order-result');
+            try {
+                const response = await fetch('http://localhost:5000/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: [{ name: 'Test Item', price: 100, qty: 1 }],
+                        user: { name: 'Test User', email: 'test@example.com' },
+                        total: 100
+                    })
+                });
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✓ Order created successfully!</span><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Order creation failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testPayment() {
+            const resultDiv = document.getElementById('payment-result');
+            try {
+                const response = await fetch('http://localhost:5000/api/payments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        orderId: 'test-order-id',
+                        amount: 100,
+                        method: 'card',
+                        status: 'success'
+                    })
+                });
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✓ Payment created successfully!</span><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Payment creation failed: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html> 
